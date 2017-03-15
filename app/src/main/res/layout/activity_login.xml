@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="teamm.cs442_project.LoginActivity">
+
+    <EditText
+        android:id="@+id/usernameText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Username"
+        android:inputType="textPersonName"
+        tools:layout_editor_absoluteX="85dp"
+        tools:layout_editor_absoluteY="204dp"
+        android:layout_above="@+id/passwordText"
+        android:layout_alignLeft="@+id/passwordText"
+        android:layout_alignStart="@+id/passwordText"
+        android:layout_marginBottom="15dp" />
+
+    <EditText
+        android:id="@+id/passwordText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Password"
+        android:inputType="textPassword"
+        tools:layout_editor_absoluteX="85dp"
+        tools:layout_editor_absoluteY="265dp"
+        android:layout_above="@+id/loginBtn"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="15dp" />
+
+    <Button
+        android:id="@+id/loginBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Login"
+        tools:layout_editor_absoluteX="148dp"
+        tools:layout_editor_absoluteY="326dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="135dp" />
+
+    <TextView
+        android:id="@+id/headerLabel"
+        android:layout_width="160dp"
+        android:layout_height="38dp"
+        android:layout_above="@+id/usernameText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="33dp"
+        android:text="Friend Explorer"
+        android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+        tools:layout_editor_absoluteX="112dp"
+        tools:layout_editor_absoluteY="124dp" />
+</RelativeLayout>

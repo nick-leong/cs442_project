@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="teamm.cs442_project.ProfileActivity">
+
+    <ImageView
+        android:id="@+id/profile_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:minWidth="180dp"
+        android:minHeight="180dp"
+        app:srcCompat="@color/cast_expanded_controller_ad_label_background_color"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="11dp"
+        android:layout_marginStart="11dp" />
+
+    <TextView
+        android:id="@+id/nameHead"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Name:"
+        android:layout_marginTop="17dp"
+        android:layout_alignTop="@+id/profile_img"
+        android:layout_alignLeft="@+id/facHead"
+        android:layout_alignStart="@+id/facHead" />
+
+    <TextView
+        android:id="@+id/nameLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="username"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:layout_below="@+id/nameHead"
+        android:layout_toRightOf="@+id/nameHead"
+        android:layout_toEndOf="@+id/nameHead" />
+
+    <TextView
+        android:id="@+id/facHead"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Faction:"
+        android:layout_marginLeft="14dp"
+        android:layout_marginStart="14dp"
+        android:layout_below="@+id/nameLabel"
+        android:layout_toRightOf="@+id/profile_img"
+        android:layout_toEndOf="@+id/profile_img"
+        android:layout_marginTop="22dp" />
+
+    <TextView
+        android:id="@+id/factionLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/nameLabel"
+        android:layout_alignStart="@+id/nameLabel"
+        android:layout_below="@+id/nameLabel"
+        android:layout_marginTop="42dp"
+        android:text="None"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+    <Button
+        android:id="@+id/factionTestBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Faction Test"
+        android:layout_below="@+id/profile_img"
+        android:layout_alignRight="@+id/profile_img"
+        android:layout_alignEnd="@+id/profile_img"
+        android:layout_marginRight="28dp"
+        android:layout_marginEnd="28dp" />
+
+</RelativeLayout>
