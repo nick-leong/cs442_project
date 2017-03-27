@@ -32,18 +32,18 @@ public class ProfileActivity extends AppCompatActivity {
         }
 
         if(factionChoice != 'Z'){
-            if(factionChoice == 'A'){
-                factionLabel.setText("Red");
-                profile_img.setBackgroundColor(Color.RED);
-            }else if(factionChoice == 'B'){
-                factionLabel.setText("Blue");
-                profile_img.setBackgroundColor(Color.BLUE);
-            }else if(factionChoice == 'C'){
+            if(factionChoice == '0'){
+                factionLabel.setText("Gold");
+                profile_img.setBackgroundColor(Color.parseColor("#FFD700"));
+            }else if(factionChoice == '1'){
                 factionLabel.setText("Green");
                 profile_img.setBackgroundColor(Color.GREEN);
-            }else if(factionChoice == 'D'){
-                factionLabel.setText("Yellow");
-                profile_img.setBackgroundColor(Color.YELLOW);
+            }else if(factionChoice == '2'){
+                factionLabel.setText("Blue");
+                profile_img.setBackgroundColor(Color.BLUE);
+            }else if(factionChoice == '3'){
+                factionLabel.setText("Orange");
+                profile_img.setBackgroundColor(Color.parseColor("#FFA500"));
             }
         }
 
@@ -66,18 +66,18 @@ public class ProfileActivity extends AppCompatActivity {
                 }
 
                 if(factionChoice != 'Z'){
-                    if(factionChoice == 'A'){
-                        factionLabel.setText("Red");
-                        profile_img.setBackgroundColor(Color.RED);
-                    }else if(factionChoice == 'B'){
-                        factionLabel.setText("Blue");
-                        profile_img.setBackgroundColor(Color.BLUE);
-                    }else if(factionChoice == 'C'){
+                    if(factionChoice == '0'){
+                        factionLabel.setText("Gold");
+                        profile_img.setBackgroundColor(Color.parseColor("#FFD700"));
+                    }else if(factionChoice == '1'){
                         factionLabel.setText("Green");
                         profile_img.setBackgroundColor(Color.GREEN);
-                    }else if(factionChoice == 'D'){
-                        factionLabel.setText("Yellow");
-                        profile_img.setBackgroundColor(Color.YELLOW);
+                    }else if(factionChoice == '2'){
+                        factionLabel.setText("Blue");
+                        profile_img.setBackgroundColor(Color.BLUE);
+                    }else if(factionChoice == '3'){
+                        factionLabel.setText("Orange");
+                        profile_img.setBackgroundColor(Color.parseColor("#FFA500"));
                     }
                 }
             }
