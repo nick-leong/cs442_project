@@ -57,8 +57,6 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         onCreate(db);
     }
 
-    // This method adds a new user to out database
-
     public void addUser(user user){
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -71,35 +69,5 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         db.insert(TABLE_USER,null,values);
         db.close();
 
-    }
-
-    // This method checks if the user with username already exists
-
-    public boolean checkUser(String username){
-        String[] columns ={
-                COLUMN_USER_ID
-        };
-
-        SQLiteDatabase db = this.getReadableDatabase();
-
-        String selection = COLUMN_USERNAME + " = ?";
-
-        String[] selectionArgs = {username};
-
-        Cursor cursor = db.query(TABLE_USER,    //table to query
-                columns,        // columns to return
-                selection,      // columns for the WHERE clause
-                selectionArgs,  // The values for the WHERE clause
-                null,
-                null,
-                null);
-        int cursorCount = cursor.getCount();
-        cursor.close();
-        db.close();
-        if(cursorCount > 0){
-            return true;
-        }
-
-        return false;
     }
 }
