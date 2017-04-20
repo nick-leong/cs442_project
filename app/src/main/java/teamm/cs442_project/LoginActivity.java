@@ -15,6 +15,8 @@ public class LoginActivity extends AppCompatActivity {
     EditText usernameText;
     EditText passwordText;
 
+    TextView signUpPrompt;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,5 +37,27 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
+
+        signUpPrompt = (TextView) findViewById(R.id.signUpPrompt);
+
+        signUpPrompt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent myIntent = new Intent(LoginActivity.this, SignUpActivity.class);
+                LoginActivity.this.startActivityForResult(myIntent, 2610);
+            }
+        });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 2610) {
+            if (resultCode == RESULT_OK) {
+                String usernameresult = data.getStringExtra("username");
+                usernameText.setText(usernameresult);
+
+                passwordText.requestFocus();
+            }
+        }
     }
 }
