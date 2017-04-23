@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             @Override
             public void run() {
                 //while(true){
-                    updateMap();
+                    //updateMap();
                     handler.postDelayed(this, 1000);
                 //}
             }
@@ -84,7 +84,10 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         g_map = map;
 
         map.animateCamera(CameraUpdateFactory.newCameraPosition(new CameraPosition(new LatLng(currLat, currLon), 16, 0, 0)));
-        map.addMarker(new MarkerOptions().position(new LatLng(currLat, currLon)).title("Marker"));
+        // map.addMarker(new MarkerOptions().position(new LatLng(currLat, currLon)).title("Marker"));
+        g_map.addMarker(new MarkerOptions().position(new LatLng(40.525761, -74.437889)).title("Starbucks Marker"));
+        g_map.addMarker(new MarkerOptions().position(new LatLng(40.523518, -74.437170)).title("Livingston Student Center Marker"));
+        g_map.addMarker(new MarkerOptions().position(new LatLng(40.521871, -74.435990)).title("Killmer Library Marker"));
     }
 
     private void updateMap() throws SecurityException{
@@ -95,9 +98,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         if(g_map != null){
             g_map.animateCamera(CameraUpdateFactory.newCameraPosition(new CameraPosition(new LatLng(currLat, currLon), 16, 0, 0)));
-            g_map.addMarker(new MarkerOptions().position(new LatLng(40.525761, -74.437889)).title("Starbucks Marker"));
-            g_map.addMarker(new MarkerOptions().position(new LatLng(40.523518, -74.437170)).title("Livingston Student Center Marker"));
-            g_map.addMarker(new MarkerOptions().position(new LatLng(40.521871, -74.435990)).title("Killmer Library Marker"));
+
 
         }
     }
