@@ -78,17 +78,14 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     }
 
     private void setPoly(double lat, double lng){
-        drawCircle(new LatLng(lat, lng));
-    }
-    private Circle drawCircle(LatLng latLng){
         CircleOptions options = new CircleOptions()
-                .center(latLng)
-                .radius(30)
-                .fillColor(0x33FF0000)
-                .strokeColor(Color.BLUE)
-                .strokeWidth(3);
+                .center(new LatLng(lat, lng))
+                .radius(5)
+                .fillColor(0x330000FF)
+                .strokeColor(Color.RED)
+                .strokeWidth(2);
 
-        return g_map.addCircle(options);
+        g_map.addCircle(options);
     }
 
     @Override
@@ -103,8 +100,8 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         map.animateCamera(CameraUpdateFactory.newCameraPosition(new CameraPosition(new LatLng(currLat, currLon), 16, 0, 0)));
         // map.addMarker(new MarkerOptions().position(new LatLng(currLat, currLon)).title("Marker"));
-        g_map.addMarker(new MarkerOptions().position(new LatLng(40.525761, -74.437889)).title("Starbucks Marker"));
-        setPoly(40.525761, -74.437889);
+        g_map.addMarker(new MarkerOptions().position(new LatLng(40.525620, -74.437874)).title("Starbucks Marker"));
+        setPoly(40.525620, -74.437874);
 
         g_map.addMarker(new MarkerOptions().position(new LatLng(40.523518, -74.437170)).title("Livingston Student Center Marker"));
         setPoly(40.523518, -74.437170);
