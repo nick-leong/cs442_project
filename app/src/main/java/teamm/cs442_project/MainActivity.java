@@ -7,12 +7,16 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.CameraPosition;
+import com.google.android.gms.maps.model.Circle;
+import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.Polygon;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Handler;
@@ -73,6 +77,20 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         handler.postDelayed(map_updater, 1000);
     }
 
+    private void setPoly(double lat, double lng){
+        drawCircle(new LatLng(lat, lng));
+    }
+    private Circle drawCircle(LatLng latLng){
+        CircleOptions options = new CircleOptions()
+                .center(latLng)
+                .radius(30)
+                .fillColor(0x33FF0000)
+                .strokeColor(Color.BLUE)
+                .strokeWidth(3);
+
+        return g_map.addCircle(options);
+    }
+
     @Override
     public void onMapReady(GoogleMap map) throws SecurityException{
 
@@ -86,8 +104,15 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         map.animateCamera(CameraUpdateFactory.newCameraPosition(new CameraPosition(new LatLng(currLat, currLon), 16, 0, 0)));
         // map.addMarker(new MarkerOptions().position(new LatLng(currLat, currLon)).title("Marker"));
         g_map.addMarker(new MarkerOptions().position(new LatLng(40.525761, -74.437889)).title("Starbucks Marker"));
+        setPoly(40.525761, -74.437889);
+
         g_map.addMarker(new MarkerOptions().position(new LatLng(40.523518, -74.437170)).title("Livingston Student Center Marker"));
+        setPoly(40.523518, -74.437170);
+
         g_map.addMarker(new MarkerOptions().position(new LatLng(40.521871, -74.435990)).title("Killmer Library Marker"));
+        setPoly(40.521871, -74.435990);
+
+
     }
 
     private void updateMap() throws SecurityException{
