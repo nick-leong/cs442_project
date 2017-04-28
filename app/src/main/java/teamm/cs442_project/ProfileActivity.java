@@ -4,8 +4,10 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -16,6 +18,7 @@ import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
 import com.facebook.HttpMethod;
 import com.facebook.Profile;
+import com.squareup.picasso.Picasso;
 
 import java.net.URL;
 
@@ -47,16 +50,16 @@ public class ProfileActivity extends AppCompatActivity {
         if(factionChoice != 'Z'){
             if(factionChoice == '0'){
                 factionLabel.setText("Gold");
-                profile_img.setBackgroundColor(Color.parseColor("#FFD700"));
+                //profile_img.setBackgroundColor(Color.parseColor("#FFD700"));
             }else if(factionChoice == '1'){
                 factionLabel.setText("Green");
-                profile_img.setBackgroundColor(Color.GREEN);
+                //profile_img.setBackgroundColor(Color.GREEN);
             }else if(factionChoice == '2'){
                 factionLabel.setText("Blue");
-                profile_img.setBackgroundColor(Color.BLUE);
+                //profile_img.setBackgroundColor(Color.BLUE);
             }else if(factionChoice == '3'){
                 factionLabel.setText("Orange");
-                profile_img.setBackgroundColor(Color.parseColor("#FFA500"));
+                //profile_img.setBackgroundColor(Color.parseColor("#FFA500"));
             }
         }
 
@@ -69,16 +72,18 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
-        profile_img.setImageBitmap(getFacebookProfilePicture(Profile.getCurrentProfile().getId()));
-        nameLabel.setText(Profile.getCurrentProfile().getFirstName());
+        String userid = Profile.getCurrentProfile().getId();
+        Picasso.with(this).load("https://graph.facebook.com/" + userid + "/picture?type=large").into(profile_img);
+
+        nameLabel.setText(Profile.getCurrentProfile().getFirstName() + " " +Profile.getCurrentProfile().getLastName());
     }
 
-    public static Bitmap getFacebookProfilePicture(String userID){
+    public static URL getFacebookProfilePictureURL(String userID){
         try {
-            URL imageURL = new URL("https://graph.facebook.com/" + userID + "/picture?type=large");
-            Bitmap bitmap = BitmapFactory.decodeStream(imageURL.openConnection().getInputStream());
-            return bitmap;
+            URL imageURL = new URL("http://graph.facebook.com/" + userID + "/picture?type=large");
+            return imageURL;
         }catch(Exception e){
+            Log.d("ERROR", e.toString());
             return null;
         }
     }
@@ -94,16 +99,16 @@ public class ProfileActivity extends AppCompatActivity {
                 if(factionChoice != 'Z'){
                     if(factionChoice == '0'){
                         factionLabel.setText("Gold");
-                        profile_img.setBackgroundColor(Color.parseColor("#FFD700"));
+                        //profile_img.setBackgroundColor(Color.parseColor("#FFD700"));
                     }else if(factionChoice == '1'){
                         factionLabel.setText("Green");
-                        profile_img.setBackgroundColor(Color.GREEN);
+                        //profile_img.setBackgroundColor(Color.GREEN);
                     }else if(factionChoice == '2'){
                         factionLabel.setText("Blue");
-                        profile_img.setBackgroundColor(Color.BLUE);
+                        //profile_img.setBackgroundColor(Color.BLUE);
                     }else if(factionChoice == '3'){
                         factionLabel.setText("Orange");
-                        profile_img.setBackgroundColor(Color.parseColor("#FFA500"));
+                        //profile_img.setBackgroundColor(Color.parseColor("#FFA500"));
                     }
                 }
             }
