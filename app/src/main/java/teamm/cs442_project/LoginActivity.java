@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
@@ -71,7 +72,9 @@ public class LoginActivity extends AppCompatActivity {
         facebookLogin.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
-                usernameText.setText("Successful facebook login");
+                //usernameText.setText("Successful facebook login");
+                Intent myIntent = new Intent(LoginActivity.this, MainActivity.class);
+                LoginActivity.this.startActivity(myIntent);
             }
 
             @Override
@@ -84,6 +87,11 @@ public class LoginActivity extends AppCompatActivity {
                 usernameText.setText("Login error!");
             }
         });
+
+        if(isLoggedIn()){
+            Intent myIntent = new Intent(LoginActivity.this, MainActivity.class);
+            LoginActivity.this.startActivity(myIntent);
+        }
     }
 
     @Override
@@ -98,5 +106,10 @@ public class LoginActivity extends AppCompatActivity {
         }else{
             callbackManager.onActivityResult(requestCode, resultCode, data);
         }
+    }
+
+    public boolean isLoggedIn() {
+        AccessToken accessToken = AccessToken.getCurrentAccessToken();
+        return accessToken != null;
     }
 }

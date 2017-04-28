@@ -1,6 +1,8 @@
 package teamm.cs442_project;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,9 +11,18 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.facebook.AccessToken;
+import com.facebook.GraphRequest;
+import com.facebook.GraphResponse;
+import com.facebook.HttpMethod;
+import com.facebook.Profile;
+
+import java.net.URL;
+
 public class ProfileActivity extends AppCompatActivity {
 
     TextView factionLabel;
+    TextView nameLabel;
     ImageView profile_img;
     Button factionTestBtn;
     char factionChoice;
@@ -22,7 +33,9 @@ public class ProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
 
         profile_img = (ImageView) findViewById(R.id.profile_img);
+
         factionLabel = (TextView) findViewById(R.id.factionLabel);
+        nameLabel = (TextView) findViewById(R.id.nameLabel);
 
         factionChoice = 'Z';
 
@@ -55,6 +68,19 @@ public class ProfileActivity extends AppCompatActivity {
                 ProfileActivity.this.startActivityForResult(myIntent, 2510);
             }
         });
+
+        profile_img.setImageBitmap(getFacebookProfilePicture(Profile.getCurrentProfile().getId()));
+        nameLabel.setText(Profile.getCurrentProfile().getFirstName());
+    }
+
+    public static Bitmap getFacebookProfilePicture(String userID){
+        try {
+            URL imageURL = new URL("https://graph.facebook.com/" + userID + "/picture?type=large");
+            Bitmap bitmap = BitmapFactory.decodeStream(imageURL.openConnection().getInputStream());
+            return bitmap;
+        }catch(Exception e){
+            return null;
+        }
     }
 
     @Override
