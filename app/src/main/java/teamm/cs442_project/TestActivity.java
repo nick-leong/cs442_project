@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -23,22 +24,22 @@ public class TestActivity extends AppCompatActivity {
     int currentQuestion;
     Button fact_test_submitBtn;
 
-    EditText group1_num;
+    Spinner group1_num;
     TextView group1_word1;
     TextView group1_word2;
     TextView group1_word3;
 
-    EditText group2_num;
+    Spinner group2_num;
     TextView group2_word1;
     TextView group2_word2;
     TextView group2_word3;
 
-    EditText group3_num;
+    Spinner group3_num;
     TextView group3_word1;
     TextView group3_word2;
     TextView group3_word3;
 
-    EditText group4_num;
+    Spinner group4_num;
     TextView group4_word1;
     TextView group4_word2;
     TextView group4_word3;
@@ -118,10 +119,10 @@ public class TestActivity extends AppCompatActivity {
 
         currentQuestion = 0;
 
-        group1_num = (EditText) findViewById(R.id.group1_num);
-        group2_num = (EditText) findViewById(R.id.group2_num);
-        group3_num = (EditText) findViewById(R.id.group3_num);
-        group4_num = (EditText) findViewById(R.id.group4_num);
+        group1_num = (Spinner) findViewById(R.id.group1_num);
+        group2_num = (Spinner) findViewById(R.id.group2_num);
+        group3_num = (Spinner) findViewById(R.id.group3_num);
+        group4_num = (Spinner) findViewById(R.id.group4_num);
 
         group1_word1 = (TextView) findViewById(R.id.group1_word1);
         group1_word2 = (TextView) findViewById(R.id.group1_word2);
@@ -178,13 +179,14 @@ public class TestActivity extends AppCompatActivity {
                     WordClusterList.WordClusterNode currentNode = questions.get(currentQuestion).words.wordnodes;
                     for(int i = 1; i <= 4; i++){
                         if(i == 1){
-                            currentNode.score = Integer.parseInt(group1_num.getText().toString());
+                            currentNode.score = Integer.parseInt(group1_num.getSelectedItem().toString());
+                            //currentNode.score = Integer.parseInt(group1_num.getText().toString());
                         }else if(i == 2){
-                            currentNode.score = Integer.parseInt(group2_num.getText().toString());
+                            currentNode.score = Integer.parseInt(group2_num.getSelectedItem().toString());
                         }else if(i == 3){
-                            currentNode.score = Integer.parseInt(group3_num.getText().toString());
+                            currentNode.score = Integer.parseInt(group3_num.getSelectedItem().toString());
                         }else{
-                            currentNode.score = Integer.parseInt(group4_num.getText().toString());
+                            currentNode.score = Integer.parseInt(group4_num.getSelectedItem().toString());
                         }
                         currentNode = currentNode.next;
                     }
@@ -203,23 +205,23 @@ public class TestActivity extends AppCompatActivity {
                     WordClusterList.WordClusterNode currentNode = questions.get(currentQuestion).words.wordnodes;
                     for(int i = 1; i <= 4; i++){
                         if(i == 1){
-                            currentNode.score = Integer.parseInt(group1_num.getText().toString());
+                            currentNode.score = Integer.parseInt(group1_num.getSelectedItem().toString());
                         }else if(i == 2){
-                            currentNode.score = Integer.parseInt(group2_num.getText().toString());
+                            currentNode.score = Integer.parseInt(group2_num.getSelectedItem().toString());
                         }else if(i == 3){
-                            currentNode.score = Integer.parseInt(group3_num.getText().toString());
+                            currentNode.score = Integer.parseInt(group3_num.getSelectedItem().toString());
                         }else{
-                            currentNode.score = Integer.parseInt(group4_num.getText().toString());
+                            currentNode.score = Integer.parseInt(group4_num.getSelectedItem().toString());
                         }
                         currentNode = currentNode.next;
                     }
 
                     currentQuestion++;
                     loadQuestion();
-                    group1_num.setText("");
-                    group2_num.setText("");
-                    group3_num.setText("");
-                    group4_num.setText("");
+                    group1_num.setSelection(3);
+                    group2_num.setSelection(2);
+                    group3_num.setSelection(1);
+                    group4_num.setSelection(0);
 
                     group1_num.requestFocus();
                 }

@@ -7,14 +7,21 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
+import com.google.android.gms.maps.model.Circle;
+import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.squareup.picasso.Picasso;
+import com.google.android.gms.maps.model.Polygon;
+import com.google.android.gms.maps.model.PolygonOptions;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Handler;
@@ -79,6 +86,26 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         handler.postDelayed(map_updater, 1000);
     }
 
+    private void setPoly(double lat, double lng){
+        CircleOptions options = new CircleOptions()
+                .center(new LatLng(lat, lng))
+                .radius(8)
+                .fillColor(0x330000FF)
+                .strokeColor(Color.RED)
+                .strokeWidth(2);
+
+        g_map.addCircle(options);
+
+
+    /*    PolygonOptions options = new PolygonOptions()
+                .add(new LatLng(lat + .000060, lng + .000020),new LatLng(lat - .000060, lng + .000020), new LatLng(lat + .000060, lng - .000020), new LatLng(lat - .000060, lng - .000020))
+                .fillColor(0x330000FF)
+                .strokeColor(Color.RED)
+                .strokeWidth(2);
+        g_map.addPolygon(options);
+    */
+    }
+
     @Override
     public void onMapReady(GoogleMap map) throws SecurityException{
 
@@ -91,9 +118,25 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         map.animateCamera(CameraUpdateFactory.newCameraPosition(new CameraPosition(new LatLng(currLat, currLon), 16, 0, 0)));
         // map.addMarker(new MarkerOptions().position(new LatLng(currLat, currLon)).title("Marker"));
-        g_map.addMarker(new MarkerOptions().position(new LatLng(40.525761, -74.437889)).title("Starbucks Marker"));
-        g_map.addMarker(new MarkerOptions().position(new LatLng(40.523518, -74.437170)).title("Livingston Student Center Marker"));
-        g_map.addMarker(new MarkerOptions().position(new LatLng(40.521871, -74.435990)).title("Killmer Library Marker"));
+        g_map.addMarker(new MarkerOptions()
+                .position(new LatLng(40.525620, -74.437874))
+                .title("Starbucks")
+                .icon(BitmapDescriptorFactory.fromResource(R.mipmap.castle_red)));
+        setPoly(40.525620, -74.437874);
+
+        g_map.addMarker(new MarkerOptions()
+                .position(new LatLng(40.523518, -74.437170))
+                .title("Livingston Student Center")
+                .icon(BitmapDescriptorFactory.fromResource(R.mipmap.castle_blue)));
+        setPoly(40.523518, -74.437170);
+
+        g_map.addMarker(new MarkerOptions()
+                .position(new LatLng(40.521871, -74.435990))
+                .title("Killmer Library")
+                .icon(BitmapDescriptorFactory.fromResource(R.mipmap.castle_red)));
+        setPoly(40.521871, -74.435990);
+
+
     }
 
     private void updateMap() throws SecurityException{
