@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -25,6 +26,7 @@ public class LoginActivity extends AppCompatActivity {
     CallbackManager callbackManager;
     AccessTokenTracker att;
 
+    ImageView fe_logo;
     Button loginBtn;
     Button toMapButton;
     LoginButton facebookLogin;
@@ -39,6 +41,9 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         FacebookSdk.sdkInitialize(getApplicationContext());
+
+        fe_logo = (ImageView) findViewById(R.id.fe_logo);
+        fe_logo.setImageResource(R.mipmap.fe_icon);
 
         usernameText = (EditText) findViewById(R.id.usernameText);
         passwordText = (EditText) findViewById(R.id.passwordText);

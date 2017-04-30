@@ -7,6 +7,14 @@
     android:layout_height="match_parent"
     tools:context="teamm.cs442_project.LoginActivity">
 
+    <ImageView
+        android:id="@+id/fe_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/headerLabel"
+        android:layout_centerHorizontal="true"
+        app:srcCompat="@color/cardview_dark_background" />
+
     <EditText
         android:id="@+id/usernameText"
         android:layout_width="wrap_content"
@@ -78,6 +86,7 @@
         android:layout_marginBottom="33dp"
         android:text="Friend Explorer"
         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+        android:visibility="invisible"
         tools:layout_editor_absoluteX="112dp"
         tools:layout_editor_absoluteY="124dp" />
 
@@ -90,4 +99,5 @@
         android:layout_marginTop="75dp"
         android:text="Sign Up"
         android:visibility="invisible" />
+
 </RelativeLayout>
