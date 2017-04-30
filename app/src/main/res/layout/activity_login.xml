@@ -18,6 +18,7 @@
         android:ems="10"
         android:hint="Username"
         android:inputType="textPersonName"
+        android:visibility="invisible"
         tools:layout_editor_absoluteX="85dp"
         tools:layout_editor_absoluteY="204dp" />
 
@@ -31,6 +32,7 @@
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
+        android:visibility="invisible"
         tools:layout_editor_absoluteX="85dp"
         tools:layout_editor_absoluteY="265dp" />
 
@@ -46,11 +48,24 @@
         tools:layout_editor_absoluteX="148dp"
         tools:layout_editor_absoluteY="326dp" />
 
+    <Button
+        android:id="@+id/toMapButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="19dp"
+        android:text="Next"
+        android:visibility="visible"
+        tools:layout_editor_absoluteX="148dp"
+        tools:layout_editor_absoluteY="326dp"
+        android:layout_alignBottom="@+id/loginBtn"
+        android:layout_alignLeft="@+id/loginBtn"
+        android:layout_alignStart="@+id/loginBtn" />
+
     <com.facebook.login.widget.LoginButton
         android:id="@+id/facebookLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/loginBtn"
+        android:layout_alignBottom="@+id/usernameText"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center_horizontal" />
 
@@ -73,5 +88,6 @@
         android:layout_below="@+id/passwordText"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="75dp"
-        android:text="Sign Up" />
+        android:text="Sign Up"
+        android:visibility="invisible" />
 </RelativeLayout>

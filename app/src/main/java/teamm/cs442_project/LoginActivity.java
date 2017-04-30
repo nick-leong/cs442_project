@@ -12,6 +12,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.facebook.AccessToken;
+import com.facebook.AccessTokenTracker;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
@@ -22,8 +23,10 @@ import com.facebook.login.widget.LoginButton;
 public class LoginActivity extends AppCompatActivity {
 
     CallbackManager callbackManager;
+    AccessTokenTracker att;
 
     Button loginBtn;
+    Button toMapButton;
     LoginButton facebookLogin;
     EditText usernameText;
     EditText passwordText;
@@ -88,9 +91,32 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        toMapButton = (Button) findViewById(R.id.toMapButton);
+        toMapButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent myIntent = new Intent(LoginActivity.this, MainActivity.class);
+                LoginActivity.this.startActivity(myIntent);
+            }
+        });
+
+        att = new AccessTokenTracker(){
+            @Override
+            protected void onCurrentAccessTokenChanged(AccessToken oldAccessToken, AccessToken currentAccessToken){
+                if(currentAccessToken == null){
+                    toMapButton.setVisibility(View.INVISIBLE);
+                }else{
+                    toMapButton.setVisibility(View.VISIBLE);
+                }
+            }
+        };
+
         if(isLoggedIn()){
+            toMapButton.setVisibility(View.VISIBLE);
             Intent myIntent = new Intent(LoginActivity.this, MainActivity.class);
             LoginActivity.this.startActivity(myIntent);
+        }else{
+            toMapButton.setVisibility(View.INVISIBLE);
         }
     }
 
