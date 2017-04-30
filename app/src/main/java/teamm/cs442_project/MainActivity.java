@@ -114,19 +114,19 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         // map.addMarker(new MarkerOptions().position(new LatLng(currLat, currLon)).title("Marker"));
         g_map.addMarker(new MarkerOptions()
                 .position(new LatLng(40.525620, -74.437874))
-                .title("Starbucks Marker")
+                .title("Starbucks")
                 .icon(BitmapDescriptorFactory.fromResource(R.mipmap.castle_red)));
         setPoly(40.525620, -74.437874);
 
         g_map.addMarker(new MarkerOptions()
                 .position(new LatLng(40.523518, -74.437170))
-                .title("Livingston Student Center Marker")
+                .title("Livingston Student Center")
                 .icon(BitmapDescriptorFactory.fromResource(R.mipmap.castle_blue)));
         setPoly(40.523518, -74.437170);
 
         g_map.addMarker(new MarkerOptions()
                 .position(new LatLng(40.521871, -74.435990))
-                .title("Killmer Library Marker")
+                .title("Killmer Library")
                 .icon(BitmapDescriptorFactory.fromResource(R.mipmap.castle_red)));
         setPoly(40.521871, -74.435990);
 
