@@ -19,8 +19,10 @@
             android:id="@+id/instructions_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="3dp"
             android:layout_weight="1"
-            android:text="Rate these groups of words from 4-1\n4 being most representative of you\nand 1 being least representative of you" />
+            android:textAlignment="center"
+            android:text="Rate these groups of words from 4-1\n4 being most and 1 being least representative of you" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -32,39 +34,68 @@
                 android:id="@+id/group1_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:padding="3dp"
                 android:layout_weight="1"
                 android:text="1"
                 android:textAppearance="@android:style/TextAppearance.Material.Title" />
 
-            <EditText
+            <!--<EditText
                 android:id="@+id/group1_num"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:inputType="number" />
+                android:inputType="number" />-->
+
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/group1_word1"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="TextView" />
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_weight=".70">
 
-        <TextView
-            android:id="@+id/group1_word2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="TextView" />
+                <TextView
+                    android:id="@+id/group1_word1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="3dp"
+                    android:layout_weight="1"
+                    android:text="TextView" />
 
-        <TextView
-            android:id="@+id/group1_word3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="TextView" />
+                <TextView
+                    android:id="@+id/group1_word2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="3dp"
+                    android:layout_weight="1"
+                    android:text="TextView" />
+
+                <TextView
+                    android:id="@+id/group1_word3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="3dp"
+                    android:layout_weight="1"
+                    android:text="TextView" />
+                </LinearLayout>
+            <Spinner
+                android:id= "@+id/group1_num"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="right"
+                android:layout_weight=".30"
+                android:gravity="center"
+                android:entries = "@array/spinnerItems">
+
+            </Spinner>
+
+
+        </LinearLayout>
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -77,39 +108,65 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:padding="3dp"
                 android:text="2"
                 android:textAppearance="@android:style/TextAppearance.Material.Title" />
 
-            <EditText
+            <!--<EditText
                 android:id="@+id/group2_num"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:inputType="number" />
+                android:inputType="number" />-->
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/group2_word1"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="TextView" />
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_weight=".70">
 
-        <TextView
-            android:id="@+id/group2_word2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="TextView" />
+                <TextView
+                    android:id="@+id/group2_word1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="3dp"
+                    android:layout_weight="1"
+                    android:text="TextView" />
 
-        <TextView
-            android:id="@+id/group2_word3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="TextView" />
+                <TextView
+                    android:id="@+id/group2_word2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="3dp"
+                    android:layout_weight="1"
+                    android:text="TextView" />
 
+                <TextView
+                    android:id="@+id/group2_word3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="3dp"
+                    android:layout_weight="1"
+                    android:text="TextView" />
+            </LinearLayout>
+            <Spinner
+                android:id= "@+id/group2_num"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="right"
+                android:layout_weight=".30"
+                android:gravity="center"
+                android:entries = "@array/spinnerItems">
+
+            </Spinner>
+
+
+        </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -121,39 +178,65 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:padding="3dp"
                 android:text="3"
                 android:textAppearance="@android:style/TextAppearance.Material.Title" />
 
-            <EditText
+            <!--<EditText
                 android:id="@+id/group3_num"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:inputType="number" />
+                android:inputType="number" />-->
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/group3_word1"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="TextView" />
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_weight=".70">
 
-        <TextView
-            android:id="@+id/group3_word2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="TextView" />
+                <TextView
+                    android:id="@+id/group3_word1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="3dp"
+                    android:layout_weight="1"
+                    android:text="TextView" />
 
-        <TextView
-            android:id="@+id/group3_word3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="TextView" />
+                <TextView
+                    android:id="@+id/group3_word2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="3dp"
+                    android:layout_weight="1"
+                    android:text="TextView" />
 
+                <TextView
+                    android:id="@+id/group3_word3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="3dp"
+                    android:layout_weight="1"
+                    android:text="TextView" />
+            </LinearLayout>
+            <Spinner
+                android:id= "@+id/group3_num"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="right"
+                android:layout_weight=".30"
+                android:gravity="center"
+                android:entries = "@array/spinnerItems">
+
+            </Spinner>
+
+
+        </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -165,44 +248,71 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:padding="3dp"
                 android:text="4"
                 android:textAppearance="@android:style/TextAppearance.Material.Title" />
 
-            <EditText
+            <!--<EditText
                 android:id="@+id/group4_num"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:inputType="number" />
+                android:inputType="number" />-->
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/group4_word1"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="TextView" />
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_weight=".70">
 
-        <TextView
-            android:id="@+id/group4_word2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="TextView" />
+                <TextView
+                    android:id="@+id/group4_word1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="3dp"
+                    android:layout_weight="1"
+                    android:text="TextView" />
 
-        <TextView
-            android:id="@+id/group4_word3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="TextView" />
+                <TextView
+                    android:id="@+id/group4_word2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="3dp"
+                    android:layout_weight="1"
+                    android:text="TextView" />
 
+                <TextView
+                    android:id="@+id/group4_word3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="3dp"
+                    android:layout_weight="1"
+                    android:text="TextView" />
+            </LinearLayout>
+            <Spinner
+                android:id= "@+id/group4_num"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="right"
+                android:layout_weight=".30"
+                android:gravity="center"
+                android:entries = "@array/spinnerItems">
+
+            </Spinner>
+
+
+        </LinearLayout>
         <Button
             android:id="@+id/fact_test_submitBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:layout_gravity="bottom"
             android:text="Next" />
 
     </LinearLayout>
