@@ -1,5 +1,6 @@
 package teamm.cs442_project;
 
+import com.facebook.Profile;
 import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -10,6 +11,7 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.squareup.picasso.Picasso;
 
 import android.content.Context;
 import android.content.Intent;
@@ -40,6 +42,10 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         radius = 1000;
 
         profileImgBtn = (ImageView) findViewById(R.id.profileImgBtn);
+        String userid = Profile.getCurrentProfile().getId();
+        Picasso.with(this).load("https://graph.facebook.com/" + userid + "/picture?type=large").into(profileImgBtn);
+        profileImgBtn.setMaxHeight(10);
+        profileImgBtn.setMaxWidth(10);
 
         profileImgBtn.setOnClickListener(new View.OnClickListener() {
             @Override
