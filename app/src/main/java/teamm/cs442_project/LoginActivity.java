@@ -87,12 +87,12 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onCancel() {
-                usernameText.setText("Canceled facebook login");
+                Log.d("status","Canceled facebook login");
             }
 
             @Override
             public void onError(FacebookException error) {
-                usernameText.setText("Login error!");
+                Log.d("status","Login error!");
             }
         });
 

@@ -1,6 +1,9 @@
 package teamm.cs442_project;
 
+import com.facebook.AccessToken;
+import com.facebook.AccessTokenTracker;
 import com.facebook.Profile;
+import com.facebook.ProfileTracker;
 import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -44,6 +47,8 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     GoogleMap g_map;
     user curr_user;
+    AccessTokenTracker att;
+    ProfileTracker profileTracker;
 
     ImageView profileImgBtn;
     Button clan_standing;
@@ -59,8 +64,15 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        curr_user = new user(Profile.getCurrentProfile().getId(),
-                Profile.getCurrentProfile().getName(),
+        String temp_id = "";
+        String temp_name = "";
+        if(Profile.getCurrentProfile() != null){
+            temp_id = Profile.getCurrentProfile().getId();
+            temp_name = Profile.getCurrentProfile().getName();
+        }
+
+        curr_user = new user(temp_id,
+                temp_name,
                 "",
                 "",
                 "None"
@@ -69,8 +81,13 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         radius = 1000;
 
         profileImgBtn = (ImageView) findViewById(R.id.profileImgBtn);
-        String userid = Profile.getCurrentProfile().getId();
-        Picasso.with(this).load("https://graph.facebook.com/" + userid + "/picture?type=large").into(profileImgBtn);
+
+        if(isLoggedIn()){
+            if(Profile.getCurrentProfile() != null){
+                String userid = Profile.getCurrentProfile().getId();
+                Picasso.with(this).load("https://graph.facebook.com/" + userid + "/picture?type=large").into(profileImgBtn);
+            }
+        }
         profileImgBtn.setMaxHeight(10);
         profileImgBtn.setMaxWidth(10);
 
@@ -122,6 +139,33 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                 showDialog();
             }
         });
+
+        att = new AccessTokenTracker(){
+            @Override
+            protected void onCurrentAccessTokenChanged(AccessToken oldAccessToken, AccessToken currentAccessToken){
+                if(currentAccessToken != null){
+                    if(Profile.getCurrentProfile() != null){
+                        String userid = Profile.getCurrentProfile().getId();
+                        curr_user.setId(userid);
+                        curr_user.setUsername(Profile.getCurrentProfile().getName());
+                        Picasso.with(MainActivity.this).load("https://graph.facebook.com/" + userid + "/picture?type=large").into(profileImgBtn);
+                    }
+                }
+            }
+        };
+
+        profileTracker = new ProfileTracker() {
+            @Override
+            protected void onCurrentProfileChanged(Profile profile, Profile profile1) {
+                if(Profile.getCurrentProfile() != null){
+                    String userid = Profile.getCurrentProfile().getId();
+                    curr_user.setId(userid);
+                    curr_user.setUsername(Profile.getCurrentProfile().getName());
+                    Picasso.with(MainActivity.this).load("https://graph.facebook.com/" + userid + "/picture?type=large").into(profileImgBtn);
+                }
+            }
+        };
+        profileTracker.startTracking();
     }
 
     @Override
@@ -133,6 +177,11 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                 }
             }
         }
+    }
+
+    public boolean isLoggedIn() {
+        AccessToken accessToken = AccessToken.getCurrentAccessToken();
+        return accessToken != null;
     }
 
     private void setPoly(double lat, double lng){
