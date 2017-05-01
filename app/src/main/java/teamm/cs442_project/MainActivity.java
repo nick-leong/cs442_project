@@ -19,20 +19,24 @@ import com.squareup.picasso.Picasso;
 import com.google.android.gms.maps.model.Polygon;
 import com.google.android.gms.maps.model.PolygonOptions;
 
+import android.content.DialogInterface;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.location.Location;
 import android.location.LocationManager;
+import android.net.Uri;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.net.Uri;
-import android.content.pm.PackageManager;
-import android.content.pm.ApplicationInfo;
+
+
 
 import static java.lang.Thread.sleep;
 
@@ -190,4 +194,19 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         return new Intent(Intent.ACTION_VIEW, uri);
     }
 
+    public void showDialog(View view){
+        AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
+        builder1.setMessage("Connecting to Server...");
+        builder1.setCancelable(true);
+        builder1.setPositiveButton(
+                "Continue",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+
+        AlertDialog alert11 = builder1.create();
+        alert11.show();
+    }
 }
