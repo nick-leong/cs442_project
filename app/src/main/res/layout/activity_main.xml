@@ -18,14 +18,16 @@
         android:layout_height="match_parent" />
 
     <android.support.v7.widget.CardView
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:id="@+id/profileCircle"
-        app:cardCornerRadius="30dp"
+        app:cardCornerRadius="25dp"
         android:layout_centerHorizontal="false"
         android:innerRadius="0dp"
         android:shape="ring"
-        android:thicknessRatio="2">
+        android:thicknessRatio="2"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="12dp">
         <ImageView
             android:layout_height="match_parent"
             android:layout_width="match_parent"
@@ -37,7 +39,6 @@
 
     <Button
         android:id="@+id/clan_standing"
-        style="@android:style/Widget.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -63,14 +64,14 @@
         style="@style/com_facebook_button"
         android:layout_width="45dp"
         android:layout_height="45dp"
-        android:layout_marginEnd="18dp"
-        android:layout_marginRight="18dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginRight="12dp"
         android:maxWidth="45dp"
         android:maxHeight="45dp"
         android:background="@drawable/com_facebook_button_icon_blue"
         android:onClick="showFBPage"
         android:text="Find Us"
-        android:layout_alignBottom="@+id/profileCircle"
+        android:layout_alignTop="@+id/profileCircle"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
