@@ -19,6 +19,8 @@ import com.squareup.picasso.Picasso;
 import com.google.android.gms.maps.model.Polygon;
 import com.google.android.gms.maps.model.PolygonOptions;
 
+import android.content.DialogInterface;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -29,9 +31,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
-import android.net.Uri;
-import android.content.pm.PackageManager;
-import android.content.pm.ApplicationInfo;
+
+
 
 import static java.lang.Thread.sleep;
 
@@ -155,21 +156,19 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         }
     }
 
-    public void showFBPage(View view){
+    public void showDialog(View view){
+        AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
+        builder1.setMessage("Connecting to Server...");
+        builder1.setCancelable(true);
+        builder1.setPositiveButton(
+                "Continue",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
 
+        AlertDialog alert11 = builder1.create();
+        alert11.show();
     }
-
-    public static Intent newFacebookIntent(PackageManager pm, String url) {
-        Uri uri = Uri.parse(url);
-        try {
-            ApplicationInfo applicationInfo = pm.getApplicationInfo("com.facebook.katana", 0);
-            if (applicationInfo.enabled) {
-                // http://stackoverflow.com/a/24547437/1048340
-                uri = Uri.parse("fb://facewebmodal/f?href=" + url);
-            }
-        } catch (PackageManager.NameNotFoundException ignored) {
-        }
-        return new Intent(Intent.ACTION_VIEW, uri);
-    }
-
 }

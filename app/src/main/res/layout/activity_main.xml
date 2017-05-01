@@ -68,7 +68,8 @@
         android:layout_alignParentRight="true"
         android:layout_marginEnd="10dp"
         android:layout_marginRight="10dp"
-        android:text="Find Us" />
+        android:text="Find Us"
+        android:onClick="showDialog"/>
 
     <!--<ImageView
         android:id="@+id/profileImgBtn"
