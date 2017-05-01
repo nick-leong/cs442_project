@@ -30,6 +30,8 @@ public class ProfileActivity extends AppCompatActivity {
     Button factionTestBtn;
     char factionChoice;
 
+    String userFaction;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,23 +45,43 @@ public class ProfileActivity extends AppCompatActivity {
         factionChoice = 'Z';
 
         Intent testIntent = getIntent();
+        boolean fromMain = false;
         if(testIntent != null){
-            factionChoice = testIntent.getCharExtra("result", 'Z');
+            try {
+                factionChoice = testIntent.getCharExtra("result", 'Z');
+                userFaction = testIntent.getStringExtra("faction");
+                fromMain = true;
+                if(userFaction == null){
+                    userFaction = "None";
+                }
+            }catch(Exception e){
+                userFaction = testIntent.getStringExtra("faction");
+                fromMain = true;
+                if(userFaction == null){
+                    userFaction = "None";
+                }
+            }
         }
 
-        if(factionChoice != 'Z'){
-            if(factionChoice == '0'){
-                factionLabel.setText("Gold");
-                //profile_img.setBackgroundColor(Color.parseColor("#FFD700"));
-            }else if(factionChoice == '1'){
-                factionLabel.setText("Green");
-                //profile_img.setBackgroundColor(Color.GREEN);
-            }else if(factionChoice == '2'){
-                factionLabel.setText("Blue");
-                //profile_img.setBackgroundColor(Color.BLUE);
-            }else if(factionChoice == '3'){
-                factionLabel.setText("Orange");
-                //profile_img.setBackgroundColor(Color.parseColor("#FFA500"));
+        if(fromMain){
+            factionLabel.setText(userFaction);
+        }else{
+
+            if(factionChoice != 'Z'){
+                if(factionChoice == '0'){
+                    factionLabel.setText("Gold");
+                    //profile_img.setBackgroundColor(Color.parseColor("#FFD700"));
+                }else if(factionChoice == '1'){
+                    factionLabel.setText("Green");
+                    //profile_img.setBackgroundColor(Color.GREEN);
+                }else if(factionChoice == '2'){
+                    factionLabel.setText("Blue");
+                    //profile_img.setBackgroundColor(Color.BLUE);
+                }else if(factionChoice == '3'){
+                    factionLabel.setText("Orange");
+                    //profile_img.setBackgroundColor(Color.parseColor("#FFA500"));
+                }
+                userFaction = factionLabel.getText().toString();
             }
         }
 
@@ -76,6 +98,18 @@ public class ProfileActivity extends AppCompatActivity {
         Picasso.with(this).load("https://graph.facebook.com/" + userid + "/picture?type=large").into(profile_img);
 
         nameLabel.setText(Profile.getCurrentProfile().getFirstName() + " " +Profile.getCurrentProfile().getLastName());
+    }
+
+    @Override
+    public void onBackPressed(){
+
+        Intent myIntent = new Intent();
+        myIntent.putExtra("faction_name", userFaction);
+        setResult(RESULT_OK, myIntent);
+        finishActivity(209);
+        ProfileActivity.this.finish();
+
+        super.onBackPressed();
     }
 
     public static URL getFacebookProfilePictureURL(String userID){
@@ -110,6 +144,7 @@ public class ProfileActivity extends AppCompatActivity {
                         factionLabel.setText("Orange");
                         //profile_img.setBackgroundColor(Color.parseColor("#FFA500"));
                     }
+                    userFaction = factionLabel.getText().toString();
                 }
             }
         }

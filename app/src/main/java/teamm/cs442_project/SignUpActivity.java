@@ -43,7 +43,7 @@ public class SignUpActivity extends AppCompatActivity {
                 if(usernameEditText.getText().length() == 0 || passwordEditText.getText().length() == 0 || passwordEditText.getText().length() < 3){
                     return;
                 }else{
-                    user createdUser = new user(0, usernameEditText.getText().toString(), passwordEditText.getText().toString(), emailEditText.getText().toString(), "?");
+                    user createdUser = new user("", usernameEditText.getText().toString(), passwordEditText.getText().toString(), emailEditText.getText().toString(), "?");
                     DatabaseHelper dbhelper = new DatabaseHelper(SignUpActivity.this);
                     dbhelper.addUser(createdUser);
 

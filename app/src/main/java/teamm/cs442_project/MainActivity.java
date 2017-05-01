@@ -43,9 +43,11 @@ import static java.lang.Thread.sleep;
 public class MainActivity extends AppCompatActivity implements OnMapReadyCallback{
 
     GoogleMap g_map;
+    user curr_user;
 
     ImageView profileImgBtn;
     Button clan_standing;
+    Button connect;
     float radius;
     LocationManager locationManager;
     FELocationListener locationListener;
@@ -56,6 +58,13 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     protected void onCreate(Bundle savedInstanceState) throws SecurityException{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        curr_user = new user(Profile.getCurrentProfile().getId(),
+                Profile.getCurrentProfile().getName(),
+                "",
+                "",
+                "None"
+        );
 
         radius = 1000;
 
@@ -69,7 +78,8 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             @Override
             public void onClick(View v) {
                 Intent myIntent = new Intent(MainActivity.this, ProfileActivity.class);
-                MainActivity.this.startActivity(myIntent);
+                myIntent.putExtra("faction", curr_user.getClan());
+                MainActivity.this.startActivityForResult(myIntent, 209);
             }
         });
 
@@ -104,6 +114,25 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                 MainActivity.this.startActivity(scoreIntent);
             }
         });
+
+        connect = (Button) findViewById(R.id.connect);
+        connect.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showDialog();
+            }
+        });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 209) {
+            if (resultCode == RESULT_OK) {
+                if(data != null){
+                    curr_user.setClan(data.getStringExtra("faction_name"));
+                }
+            }
+        }
     }
 
     private void setPoly(double lat, double lng){
@@ -194,9 +223,9 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         return new Intent(Intent.ACTION_VIEW, uri);
     }
 
-    public void showDialog(View view){
+    public void showDialog(){
         AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
-        builder1.setMessage("Connecting to Server...");
+        builder1.setMessage("Your response has been recorded!");
         builder1.setCancelable(true);
         builder1.setPositiveButton(
                 "Continue",

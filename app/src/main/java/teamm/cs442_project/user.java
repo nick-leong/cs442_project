@@ -6,13 +6,13 @@ package teamm.cs442_project;
 
 public class user {
     // Private info
-    private int id;
+    private String id;
     private String username;
     private String password;
     private String email;
     private String clan;
 
-    public user(int id, String userName, String password, String email, String clan){
+    public user(String id, String userName, String password, String email, String clan){
         this.id = id;
         this.username = userName;
         this.password = password;
@@ -20,8 +20,8 @@ public class user {
         this.clan = clan;
     }
 
-    public int getId(){    return id;    }
-    public void setId(int id){   this.id = id;   }
+    public String getId(){    return id;    }
+    public void setId(String id){   this.id = id;   }
 
     public String getUserName(){    return username;    }
     public void setUsername(String username){   this.username = username;   }
