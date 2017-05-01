@@ -6,8 +6,9 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
 
-    <provider android:authorities="com.facebook.app.FacebookContentProvider180952489092802"
+    <provider
         android:name="com.facebook.FacebookContentProvider"
+        android:authorities="com.facebook.app.FacebookContentProvider180952489092802"
         android:exported="true" />
 
     <application
@@ -22,10 +23,9 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyDYngTseB0O9Pe1rXef6S8RRDlxLuv-gWs" />
-
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
-            android:value="@string/facebook_app_id"/>
+            android:value="@string/facebook_app_id" />
 
         <activity android:name=".LoginActivity">
             <intent-filter>
@@ -37,7 +37,8 @@
         <activity android:name=".MainActivity" />
         <activity android:name=".ProfileActivity" />
         <activity android:name=".TestActivity" />
-        <activity android:name=".SignUpActivity"></activity>
+        <activity android:name=".SignUpActivity" />
+        <activity android:name=".ScoreActivity"></activity>
     </application>
 
 </manifest>

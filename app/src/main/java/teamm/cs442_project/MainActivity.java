@@ -28,6 +28,7 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.net.Uri;
 import android.content.pm.PackageManager;
@@ -40,9 +41,12 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     GoogleMap g_map;
 
     ImageView profileImgBtn;
+    Button clan_standing;
     float radius;
     LocationManager locationManager;
     FELocationListener locationListener;
+
+    //Button find_us;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) throws SecurityException{
@@ -87,6 +91,15 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             }
         };
         handler.postDelayed(map_updater, 1000);
+
+        clan_standing = (Button) findViewById(R.id.clan_standing);
+        clan_standing.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent scoreIntent = new Intent(MainActivity.this, ScoreActivity.class);
+                MainActivity.this.startActivity(scoreIntent);
+            }
+        });
     }
 
     private void setPoly(double lat, double lng){
@@ -135,7 +148,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         g_map.addMarker(new MarkerOptions()
                 .position(new LatLng(40.521871, -74.435990))
-                .title("Killmer Library")
+                .title("Kilmer Library")
                 .icon(BitmapDescriptorFactory.fromResource(R.mipmap.castle_red)));
         setPoly(40.521871, -74.435990);
 
@@ -156,7 +169,12 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     }
 
     public void showFBPage(View view){
-
+        try {
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("fb://profile/426253597411506"));
+            startActivity(intent);
+        } catch(Exception e) {
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/RUFE-Game-Page-1241076769323661")));
+        }
     }
 
     public static Intent newFacebookIntent(PackageManager pm, String url) {

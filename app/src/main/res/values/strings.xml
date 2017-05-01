@@ -2,7 +2,7 @@
     <string name="app_name">CS442_Project</string>
     <string name="facebook_app_id">180952489092802</string>
 
-    <string-array name = "spinnerItems">
+    <string-array name="spinnerItems">
         <item>1</item>
         <item>2</item>
         <item>3</item>

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scoreContainer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="teamm.cs442_project.ScoreActivity">
+
+    <TextView
+        android:id="@+id/goldTeam"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="53dp"
+        android:text="Gold Team: "
+        android:textColor="@color/goldTeam"
+        android:textAppearance="@style/TextAppearance.AppCompat.Menu"
+        android:layout_marginLeft="47dp"
+        android:layout_marginStart="47dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:id="@+id/blueTeam"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/goldTeam"
+        android:layout_alignStart="@+id/goldTeam"
+        android:layout_below="@+id/goldTeam"
+        android:layout_marginTop="68dp"
+        android:text="Blue Team: "
+        android:textColor="@color/blueTeam"
+        android:textAppearance="@style/TextAppearance.AppCompat.Menu" />
+
+    <TextView
+        android:id="@+id/greenTeam"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/goldTeam"
+        android:layout_alignStart="@+id/goldTeam"
+        android:layout_below="@+id/blueTeam"
+        android:layout_marginTop="68dp"
+        android:text="Green Team: "
+        android:textColor="@color/greenTeam"
+        android:textAppearance="@style/TextAppearance.AppCompat.Menu" />
+
+    <TextView
+        android:id="@+id/orangeTeam"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/goldTeam"
+        android:layout_alignStart="@+id/goldTeam"
+        android:layout_below="@+id/greenTeam"
+        android:layout_marginTop="68dp"
+        android:text="Orange Team: "
+        android:textColor="@color/orangeTeam"
+        android:textAppearance="@style/TextAppearance.AppCompat.Menu" />
+
+    <TextView
+        android:id="@+id/goldTeamNum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/goldTeam"
+        android:layout_alignBottom="@+id/goldTeam"
+        android:layout_marginLeft="28dp"
+        android:layout_marginStart="28dp"
+        android:layout_toEndOf="@+id/orangeTeam"
+        android:layout_toRightOf="@+id/orangeTeam"
+        android:text="0"
+        android:textAppearance="@style/TextAppearance.AppCompat.Menu" />
+
+    <TextView
+        android:id="@+id/blueTeamNum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/goldTeamNum"
+        android:layout_alignStart="@+id/goldTeamNum"
+        android:layout_below="@+id/goldTeamNum"
+        android:layout_marginTop="68dp"
+        android:text="0"
+        android:textAppearance="@style/TextAppearance.AppCompat.Menu" />
+
+    <TextView
+        android:id="@+id/greenTeamNum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/goldTeamNum"
+        android:layout_alignStart="@+id/goldTeamNum"
+        android:layout_below="@+id/blueTeamNum"
+        android:layout_marginTop="68dp"
+        android:text="0"
+        android:textAppearance="@style/TextAppearance.AppCompat.Menu" />
+
+    <TextView
+        android:id="@+id/orangeTeamNum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/goldTeamNum"
+        android:layout_alignStart="@+id/goldTeamNum"
+        android:layout_below="@+id/greenTeamNum"
+        android:layout_marginTop="68dp"
+        android:text="0"
+        android:textAppearance="@style/TextAppearance.AppCompat.Menu" />
+</RelativeLayout>

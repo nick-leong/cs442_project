@@ -3,4 +3,9 @@
     <color name="colorPrimary">#cc0033</color><!--#3F51B5</color>-->
     <color name="colorPrimaryDark">#000000</color><!--#303F9F</color>-->
     <color name="colorAccent">#5f6a72</color><!--#FF4081</color>-->
+
+    <color name="goldTeam">#FFD700</color>
+    <color name="blueTeam">#0000FF</color>
+    <color name="greenTeam">#00A300</color>
+    <color name="orangeTeam">#FFA500</color>
 </resources>
