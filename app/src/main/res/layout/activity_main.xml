@@ -53,26 +53,26 @@
         android:id="@+id/connect"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="Connect"
         android:layout_alignBaseline="@+id/clan_standing"
         android:layout_alignBottom="@+id/clan_standing"
-        android:layout_centerHorizontal="true"
-        android:text="Connect" />
+        android:layout_centerHorizontal="true" />
 
     <ImageButton
         android:id="@+id/find_us"
         style="@style/com_facebook_button"
         android:layout_width="45dp"
         android:layout_height="45dp"
-        android:layout_alignBottom="@+id/connect"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginEnd="10dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginEnd="18dp"
+        android:layout_marginRight="18dp"
         android:maxWidth="45dp"
         android:maxHeight="45dp"
         android:background="@drawable/com_facebook_button_icon_blue"
         android:onClick="showFBPage"
-        android:text="Find Us" />
+        android:text="Find Us"
+        android:layout_alignBottom="@+id/profileCircle"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <!--<ImageView
         android:id="@+id/profileImgBtn"
