@@ -140,7 +140,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                 if(a == 'z'){
                     showDialog("Please join a faction first");
                 }else{
-                    SocketAsync dataTask = new SocketAsync(""+a);
+                    SocketAsync dataTask = new SocketAsync(Character.toString(a));
                     dataTask.execute();
                     showDialog("Your response has been recorded!");
                 }
