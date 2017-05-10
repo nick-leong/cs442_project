@@ -240,7 +240,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         g_map.addMarker(new MarkerOptions()
                 .position(new LatLng(40.525620, -74.437874))
                 .title("Starbucks")
-                .icon(BitmapDescriptorFactory.fromResource(R.mipmap.castle_red)));
+                .icon(BitmapDescriptorFactory.fromResource(R.mipmap.castle_gold)));
         setPoly(40.525620, -74.437874);
 
         g_map.addMarker(new MarkerOptions()
@@ -252,7 +252,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         g_map.addMarker(new MarkerOptions()
                 .position(new LatLng(40.521871, -74.435990))
                 .title("Kilmer Library")
-                .icon(BitmapDescriptorFactory.fromResource(R.mipmap.castle_red)));
+                .icon(BitmapDescriptorFactory.fromResource(R.mipmap.castle_gold)));
         setPoly(40.521871, -74.435990);
 
 
