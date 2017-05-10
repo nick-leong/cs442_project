@@ -9,6 +9,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.Socket;
+import java.util.ArrayList;
 
 public class ScoreActivity extends AppCompatActivity {
 
@@ -33,8 +34,8 @@ public class ScoreActivity extends AppCompatActivity {
         greenTeamNum = (TextView) findViewById(R.id.greenTeamNum);
         orangeTeamNum = (TextView) findViewById(R.id.orangeTeamNum);
 
-        SocketAsync dataTask = new SocketAsync("close", goldTeamNum);
-        dataTask.execute();
+//        SocketAsync dataTask = new SocketAsync("a", goldTeamNum);
+//        dataTask.execute();
 
     }
 
@@ -47,7 +48,12 @@ public class ScoreActivity extends AppCompatActivity {
     @Override
     public void onResume(){
         super.onResume();
-        SocketAsync dataTask = new SocketAsync("close", goldTeamNum);
+        ArrayList<TextView> socketInput = new ArrayList<TextView>();
+        socketInput.add(goldTeamNum);
+        socketInput.add(blueTeamNum);
+        socketInput.add(greenTeamNum);
+        socketInput.add(orangeTeamNum);
+        SocketAsync dataTask = new SocketAsync("a", socketInput);
         dataTask.execute();
     }
 

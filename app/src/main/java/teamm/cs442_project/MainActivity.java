@@ -136,7 +136,14 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         connect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showDialog();
+                char a = getTeamChar(curr_user.getClan());
+                if(a == 'z'){
+                    showDialog("Please join a faction first");
+                }else{
+                    SocketAsync dataTask = new SocketAsync(""+a);
+                    dataTask.execute();
+                    showDialog("Your response has been recorded!");
+                }
             }
         });
 
@@ -176,6 +183,20 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                     curr_user.setClan(data.getStringExtra("faction_name"));
                 }
             }
+        }
+    }
+
+    public char getTeamChar(String clan){
+        if(clan.equals("Gold")){
+            return 'g';
+        }else if(clan.equals("Blue")){
+            return 'b';
+        }else if(clan.equals("Green")){
+            return 'r';
+        }else if(clan.equals("Orange")){
+            return 'o';
+        }else{
+            return 'z';
         }
     }
 
@@ -272,9 +293,9 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         return new Intent(Intent.ACTION_VIEW, uri);
     }
 
-    public void showDialog(){
+    public void showDialog(String msg){
         AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
-        builder1.setMessage("Your response has been recorded!");
+        builder1.setMessage(msg);
         builder1.setCancelable(true);
         builder1.setPositiveButton(
                 "Continue",

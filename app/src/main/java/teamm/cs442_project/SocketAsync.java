@@ -1,27 +1,28 @@
 package teamm.cs442_project;
 
 import android.os.AsyncTask;
-import android.util.Log;
+import android.widget.EditText;
 import android.widget.TextView;
 
-import java.io.ByteArrayOutputStream;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.net.Socket;
-import java.net.UnknownHostException;
+import java.util.ArrayList;
 
 public class SocketAsync extends AsyncTask<Void, Void, String>{
 
     private String server_resp;
     private String client_request;
 
-    private TextView teamNumText;
+    private ArrayList<TextView> teamNumText;
 
-    SocketAsync(String request, TextView teamEdit){
+    SocketAsync(String request, ArrayList<TextView> teamEdit){
         this.client_request = request;
         this.teamNumText = teamEdit;
+    }
+
+    SocketAsync(String request){
+        this.client_request = request;
     }
 
     @Override
@@ -40,32 +41,34 @@ public class SocketAsync extends AsyncTask<Void, Void, String>{
             dataOut = new DataOutputStream(client_sock.getOutputStream());
             dataIn = new DataInputStream(client_sock.getInputStream());
 
-            dataOut.writeUTF(client_request);
+            dataOut.write(client_request.getBytes());
 
             int amt_rec = 0;
             int amt_exp = 1;
 
-            while(amt_rec < amt_exp) {
-                server_resp = dataIn.readUTF();
+            byte[] resp = new byte[1024];
+            //byte[] send = new byte[1024];
 
-                if(server_resp.equals("err")){
-                    dataOut.writeUTF("close");
+            while(amt_rec < amt_exp) {
+                dataIn.read(resp);
+
+                if(resp.toString().equals("err")){
+                    dataOut.write("close".getBytes());
                     break;
                 }
 
-                amt_rec += server_resp.length();
+                amt_rec += resp.toString().length();
             }
 
-            dataOut.writeUTF("close");
+            server_resp = new String(resp, "US-ASCII");
 
-        }catch(IOException ioe) {
+        }catch(Exception e) {
             server_resp = "read err";
-        } finally {
+        }finally {
             if(client_sock != null){
                 try {
-                    dataOut.writeUTF("close");
-                    client_sock.close();
-                }catch(IOException cl){
+                    dataOut.write("close".getBytes());
+                }catch(Exception e){
                     //
                 }
             }
@@ -76,7 +79,15 @@ public class SocketAsync extends AsyncTask<Void, Void, String>{
 
     @Override
     protected void onPostExecute(String result){
-        this.teamNumText.setText(server_resp);
-        super.onPostExecute(result);
+        if(this.teamNumText != null){
+            int count = 0;
+            String[] parts = server_resp.split(",");
+
+            for(TextView edit : teamNumText){
+                edit.setText(parts[count]);
+                count++;
+            }
+            super.onPostExecute(result);
+        }
     }
 }
