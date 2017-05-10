@@ -1,10 +1,22 @@
 package teamm.cs442_project;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.Socket;
+
 public class ScoreActivity extends AppCompatActivity {
+
+    Socket client_sock;
+    final String server_ip = "52.27.236.253";
+    final int data_port = 65121;
+
+    String server_resp;
 
     TextView goldTeamNum;
     TextView blueTeamNum;
@@ -21,9 +33,26 @@ public class ScoreActivity extends AppCompatActivity {
         greenTeamNum = (TextView) findViewById(R.id.greenTeamNum);
         orangeTeamNum = (TextView) findViewById(R.id.orangeTeamNum);
 
-        goldTeamNum.setText(Integer.toString((int) Math.floor(Math.random()*10)));
-        blueTeamNum.setText(Integer.toString((int) Math.floor(Math.random()*10)));
-        greenTeamNum.setText(Integer.toString((int) Math.floor(Math.random()*10)));
-        orangeTeamNum.setText(Integer.toString((int) Math.floor(Math.random()*10)));
+        SocketAsync dataTask = new SocketAsync("close", goldTeamNum);
+        dataTask.execute();
+
     }
+
+    @Override
+    public void onBackPressed(){
+        super.onBackPressed();
+        finish();
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        SocketAsync dataTask = new SocketAsync("close", goldTeamNum);
+        dataTask.execute();
+    }
+
+    private String getTeam(){
+        return "Gold";
+    }
+
 }
